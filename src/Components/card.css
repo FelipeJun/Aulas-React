@@ -1,0 +1,12 @@
+.card-body{
+    background-color: rgb(71, 76, 102);
+}
+
+.card-image{
+    width: 400px; 
+    height: auto;
+}
+
+.card-text{
+    color: whitesmoke;
+}

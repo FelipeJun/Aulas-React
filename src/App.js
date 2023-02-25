@@ -1,5 +1,5 @@
 import React from 'react';
-import Pokemon from './Components/pokemon'
+import Card from './Components/card';
 let i = 1;
 
 function App() {
@@ -30,12 +30,28 @@ function App() {
 
   return (
     pokemon.sprites ?
-      <div>
-        <Pokemon img = {pokemon.sprites.front_default} 
-        nome ={pokemon.name} types = {pokemon.types} abilities = {pokemon.abilities}></Pokemon>
-        <button onClick={Anterior}>Anterior</button>
-        <button onClick={Proximo}>Proximo</button>
+      <div className='container d-flex justify-content-center'>
+        <div className='row '>
+          <Card img = {pokemon.sprites.front_default} 
+          name={pokemon.name} types ={pokemon.types} abilities={pokemon.abilities}> 
+          </Card>
+          <div className="btn-group justify-content-center" role="group">
+            <div className="row ">
+              <div className="col-auto">
+                <button onClick={Anterior} 
+                type="button" className="btn btn-primary">Anterior
+                </button>
+              </div>
+              <div className="col-auto">
+                <button onClick={Proximo} 
+                type="button" className="btn btn-secondary">Proximo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      
     :
       <div>
         <button onClick={Carregar}>Carregar</button>
