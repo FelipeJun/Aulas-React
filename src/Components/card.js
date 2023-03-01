@@ -3,10 +3,10 @@ import "./card.css"
 
 function Card(props){
     return(
-        <div className="card w-50 d-flex align-items-center text-center card-body">
+        <div className="card w-50 text-center card-body">
             <Pokemon img = {props.img} 
             nome ={props.name} types = {props.types}
-            abilities = {props.abilities}>
+            abilities = {props.abilities} status = {props.status}>
             </Pokemon>
         </div>
     );
