@@ -3,7 +3,7 @@ import "./card.css";
 
 function Card(props) {
   return (
-    <div className="card card-body card-body-sty">
+    <div className="card card-body-sty">
       <Pokemon
         pokeid = {props.pokeid}
         img={props.img}

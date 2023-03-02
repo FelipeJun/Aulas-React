@@ -1,5 +1,7 @@
 import React from "react";
 import Card from "./Components/card";
+import "./app.css";
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 let i = 1;
 
 function App() {
@@ -28,7 +30,13 @@ function App() {
   }
 
   return pokemon.sprites ? (
-    <div className="container d-flex justify-content-center">
+    <div className="container container-main d-flex justify-content-center">
+      <div className="seta esquerda" onClick={Anterior}>
+        <IoIosArrowBack />
+      </div>
+      <div className="seta direita" onClick={Proximo}>
+        <IoIosArrowForward />
+      </div>
       <div className="row">
         <Card
           pokeid = {i}
@@ -38,28 +46,6 @@ function App() {
           abilities={pokemon.abilities}
           status={pokemon.stats}
         ></Card>
-        <div className="btn-group justify-content-center" role="group">
-          <div className="row">
-            <div className="col-auto">
-              <button
-                onClick={Anterior}
-                type="button"
-                className="btn btn-primary"
-              >
-                Anterior
-              </button>
-            </div>
-            <div className="col-auto">
-              <button
-                onClick={Proximo}
-                type="button"
-                className="btn btn-secondary"
-              >
-                Proximo
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   ) : (

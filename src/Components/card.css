@@ -2,10 +2,6 @@
     background-color: rgb(71, 76, 102);
 }
 
-.card-text-sty{
-    width: 80%;
-}
-
 .card-image{
     width: 200px; 
     height: auto;
@@ -18,4 +14,8 @@
 
 .texto-direita{
     text-align: right;
+}
+
+.card{
+    width: 800px;
 }
