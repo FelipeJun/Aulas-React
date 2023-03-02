@@ -1,5 +1,9 @@
-.card-body{
+.card-body-sty{
     background-color: rgb(71, 76, 102);
+}
+
+.card-text-sty{
+    width: 80%;
 }
 
 .card-image{
@@ -9,5 +13,9 @@
 }
 
 .card-text{
-    color: whitesmoke;
+    color: #F2F2F2;
+}
+
+.texto-direita{
+    text-align: right;
 }

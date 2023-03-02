@@ -31,6 +31,7 @@ function App() {
     <div className="container d-flex justify-content-center">
       <div className="row">
         <Card
+          pokeid = {i}
           img={pokemon.sprites}
           name={pokemon.name}
           types={pokemon.types}
@@ -43,14 +44,19 @@ function App() {
               <button
                 onClick={Anterior}
                 type="button"
-                className="btn btn-primary">Anterior
-</button>
+                className="btn btn-primary"
+              >
+                Anterior
+              </button>
             </div>
             <div className="col-auto">
               <button
                 onClick={Proximo}
                 type="button"
-                className="btn btn-secondary">Proximo</button>
+                className="btn btn-secondary"
+              >
+                Proximo
+              </button>
             </div>
           </div>
         </div>
