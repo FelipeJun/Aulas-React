@@ -1,4 +1,4 @@
-import "./card.css";
+import "./CSS/card.css";
 
 function Pokemon(props) {
   const getTypeColor = (type) => {

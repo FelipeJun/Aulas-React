@@ -1,5 +1,5 @@
 import Pokemon from "./pokemon";
-import "./card.css";
+import "./CSS/card.css";
 
 function Card(props) {
   return (
