@@ -1,18 +1,19 @@
-import Pokemon from "./pokemon";
-import "./CSS/card.css";
+import React from "react";
+import "./Card.css";
+import { Link } from "react-router-dom";
 
-function Card(props) {
-  return (
-    <div className="card card-body-sty">
-      <Pokemon
-        pokeid = {props.pokeid}
-        img={props.img}
-        nome={props.name}
-        types={props.types}
-        abilities={props.abilities}
-        status={props.status}
-      ></Pokemon>
-    </div>
-  );
+export default function Card({character}){
+    return(
+        <div className="card-container">
+        <img src={character.image} alt={character.name} />
+        <h2>{character.name}</h2>
+        <p>Status: {character.status}</p>
+        <p>Espécie: {character.species}</p>
+        <p>Gênero: {character.gender}</p>
+        <p>Localização: {character.location.name}</p>
+        <Link to='/details'>
+            <button>Detalhes</button>
+        </Link>
+      </div>
+    )
 }
-export default Card;
