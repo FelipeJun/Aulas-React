@@ -1,0 +1,21 @@
+.card-body-sty{
+    background-color: rgb(71, 76, 102);
+}
+
+.card-image{
+    width: 200px; 
+    height: auto;
+    
+}
+
+.card-text{
+    color: #F2F2F2;
+}
+
+.texto-direita{
+    text-align: right;
+}
+
+.card{
+    width: 800px;
+}
