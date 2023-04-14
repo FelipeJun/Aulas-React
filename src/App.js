@@ -1,18 +1,21 @@
-
-import Login from './components/login';
-import Home from './components/home'
-import {UsuarioContext} from './usuarioContext';
-import {usuarios} from './data/usuarios'
-import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home  from './Home';
+import About from './About';
+import Users from './user/Users';
+import User from './user/User';
 
 function App() {
-  const [logado, setLogado] = useState();
   return (
-    <div>
-      <UsuarioContext.Provider value={usuarios}>
-        {logado? <Home logado={logado} setLogado={setLogado}/> : <Login setLogado={setLogado}/>}     
-      </UsuarioContext.Provider>
-    </div>
+    <Routes>
+      <Route path='/'>
+        <Route index element={<Home />} />
+        <Route path='about' element={<About />} />
+      </Route>
+      <Route path='/user'>
+        <Route index element={<Users />} />
+        <Route path=':userId' element={<User />} />
+      </Route>
+    </Routes>
   );
 }
 
