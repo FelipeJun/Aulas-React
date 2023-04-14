@@ -1,18 +1,13 @@
-import Video from './Video'
-import Header from './Header';
-import Buscar from './Buscar';
-import { videos } from './data/videos';
-import { VideoContext } from './VideoContext';
-import ListVideo from './ListVideo';
-function App() {
-  return (
+import Login from './components/login';
+import Home from './home';
+import './App.css';
+import React from 'react';
 
-    <div className='container'>
-      <VideoContext.Provider value={videos}>
-        <Header/>
-        <Buscar/>
-        <ListVideo />
-      </VideoContext.Provider>
+function App() {
+  const [login, setLogin] = React.useState();
+  return (
+    <div className="App">
+      {login? <Home login={login} setLogin={setLogin}/> : <Login setLogin={setLogin}/>}
     </div>
   );
 }
