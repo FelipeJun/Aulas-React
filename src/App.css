@@ -1,7 +1,5 @@
 .App {
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 
 .App-logo {
@@ -37,32 +35,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.login{
-  background-color: red;
-  text-align: center;
-  margin-top: 10%;
-  margin-left: 40%;
-  max-width: 18%; 
-}
-
-.user{
-  background-color: red;
-  text-align: center;
-  margin-left: 90%;
-  
-}
-
-.btnLogin{
-  margin-top: 4%;
-}
-
-.usuarioLogin{
-  margin-top: 2%;
-}
-
-.senhaLogin{
-  margin-top: 2%;
-  margin-left: 4%;
 }
