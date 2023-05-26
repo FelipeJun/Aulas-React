@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const uri =
   "mongodb+srv://senac:batata123@cluster0.dywejmt.mongodb.net/?retryWrites=true&w=majority";
 
@@ -23,7 +23,7 @@ const client = new MongoClient(uri, {
 const myCollection = "karts";
 const db = client.db("Kart");
 
-async function insere1elemento(nomePiloto,numPiloto,posicao,categoria) {
+async function insereElemento(nomePiloto,numPiloto,posicao,categoria) {
   const registrados = db.collection(myCollection);
   const newReg = { nomePiloto: nomePiloto, numPiloto: numPiloto,posicao: posicao,categoria: categoria };
   const result = await registrados.insertOne(newReg);
@@ -44,49 +44,49 @@ async function insereNelemento() {
 }
 
 async function selecionarValores() {
-  const pizzas = await db.collection(myCollection).find().toArray();
-  return pizzas;
+  const pilotos = await db.collection(myCollection).find().toArray();
+  return pilotos;
+}
+async function editaElemento(_id, nomePiloto, numPiloto, posicao, categoria){
+  const pilotos = db.collection(myCollection);
+  const filtro = { _id: new ObjectId(_id)};
+  const update = { $set: { nomePiloto: nomePiloto, numPiloto: numPiloto, posicao: posicao, categoria: categoria } };
+  await pilotos.updateOne(filtro, update);
+
 }
 
-async function editarValor(nomePilotoA,nomePiloto,numPiloto,posicao,categoria) {
-  const pizzas = db.collection(myCollection);
-  const filtro = { nomePiloto: nomePilotoA };
-  const update = { $set: { nomePiloto: nomePiloto, numPiloto: numPiloto,posicao: posicao,categoria: categoria } };
-  await pizzas.updateOne(filtro, update);
-  //selecionarValores();
-}
-
-async function deleteValor(nomePiloto) {
+async function deletaElemento(nomePiloto) {
   const registrados = db.collection(myCollection);
-  //const pizza = await pizzas.findOne(); exclui a primeira da lista
-  //pizzas.deleteOne(pizza);
   registrados.findOneAndDelete({ nomePiloto: nomePiloto });
-  //selecionarValores();
 }
 
-app.post("/usuarios", (req, res) => {
-  const { usuario, senha } = req.body;
-  insere1elemento(usuario, senha);
+
+app.post("/pilotos", (req, res) => {
+  const { nomePiloto,numPiloto,posicao,categoria } = req.body;
+  insereElemento(nomePiloto,numPiloto,posicao,categoria);
   res.json("Inserido!");
 });
 
-app.delete("/usuarios", (req, res) => {
-  const { usuario } = req.body;
-  deleteValor(usuario);
+app.delete("/pilotos", (req, res) => {
+  const { nomePiloto } = req.body;
+  deletaElemento(nomePiloto);
   res.json("Deletado!");
 });
 
-app.put("/usuarios", (req, res) => {
-  const { usuario, senha } = req.body;
-  editarValor(usuario, senha);
-  res.json("Editado!");
-});
 
-app.get("/usuarios", async (request, response) => {
+app.get("/pilotos", async (req, res) => {
   console.log("Buscando resultado");
   const query = await selecionarValores();
   console.log("Query executada com sucesso!");
-  return response.json(query);
+  return res.json(query);
+});
+
+
+app.put("/pilotos", (req, res) => {
+  console.log(req.body)
+  const {_id, nomePiloto, numPiloto, posicao, categoria} = req.body;
+    editaElemento(_id, nomePiloto, numPiloto, posicao, categoria);
+    res.json("Editado");
 });
 
 app.listen(3001, () => {

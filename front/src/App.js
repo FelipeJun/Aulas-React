@@ -1,22 +1,18 @@
 import './App.css';
-import { useRef } from 'react';
-import Insert from './components/Insert';
-import Delete from './components/Delete';
-import Edit from './components/Edit';
-import Get from './components/Get';
+import {Routes, Route} from 'react-router-dom';
+import Create from './pages/Create.js'
+import Home from './pages/Home';
+import Edit from './pages/Edit'
 
 function App() {
-  const usuario = useRef(null);
-  const senha = useRef(null);
-  
   return (
     <>
-      <input type="text" ref={usuario} placeholder='Usuário' />
-      <input type="text" ref={senha} placeholder='Senha' />
-      <Insert usuario={usuario} senha={senha} />
-      <Delete usuario={usuario} />
-      <Edit usuario={usuario} senha={senha} />
-      <Get></Get>
+      <Routes>
+      <Route path='/index' element={<Home/>}/>
+      <Route path='/criar' element={<Create/>}/>
+      <Route path='/editar/:id' element={<Edit/>}/>
+      <Route path='*' element={<Home/>}/>
+    </Routes>
     </>
   );
 }
